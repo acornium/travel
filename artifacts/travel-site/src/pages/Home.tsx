@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { TPWidget } from "@/components/TPWidget";
 import {
   TravelpayoutsResults,
   TravelpayoutsWhiteLabel,
