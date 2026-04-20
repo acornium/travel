@@ -4,13 +4,30 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-const rawPort = process.env.PORT;
-
-if (!rawPort) {
-  throw new Error(
-    "PORT environment variable is required but was not provided.",
-  );
+function normalizeBasePath(basePath: string) {
+  const withLeadingSlash = basePath.startsWith("/") ? basePath : `/${basePath}`;
+  return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
 }
+
+function resolveBasePath() {
+  if (process.env.BASE_PATH) {
+    return normalizeBasePath(process.env.BASE_PATH);
+  }
+
+  const repository = process.env.GITHUB_REPOSITORY?.split("/")[1];
+
+  if (
+    process.env.GITHUB_ACTIONS === "true" &&
+    repository &&
+    !repository.endsWith(".github.io")
+  ) {
+    return normalizeBasePath(repository);
+  }
+
+  return "/";
+}
+
+const rawPort = process.env.PORT ?? "4173";
 
 const port = Number(rawPort);
 
@@ -18,13 +35,7 @@ if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-const basePath = process.env.BASE_PATH;
-
-if (!basePath) {
-  throw new Error(
-    "BASE_PATH environment variable is required but was not provided.",
-  );
-}
+const basePath = resolveBasePath();
 
 export default defineConfig({
   base: basePath,
