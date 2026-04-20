@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelpayouts Widget</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #f8fbff;
+        font-family: Inter, system-ui, sans-serif;
+      }
+
+      .shell {
+        box-sizing: border-box;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      .panel {
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .panel + .panel {
+        margin-top: 24px;
+      }
+
+      #tpwl-tickets {
+        min-height: 900px;
+      }
+    </style>
+    <script>
+      (function () {
+        var script = document.createElement("script");
+        script.async = 1;
+        script.type = "module";
+        script.src = "https://tpwgt.com/wl_web/main.js?wl_id=16502";
+        document.head.appendChild(script);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="panel">
+        <div id="tpwl-search"></div>
+      </div>
+      <div class="panel">
+        <div id="tpwl-tickets"></div>
+      </div>
+    </div>
+  </body>
+</html>

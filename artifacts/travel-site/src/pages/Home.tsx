@@ -5,7 +5,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TPWidget } from "@/components/TPWidget";
 import {
-  TravelpayoutsResults,
   TravelpayoutsWhiteLabel,
 } from "@/components/TravelpayoutsWhiteLabel";
 import { DestinationCard } from "@/components/DestinationCard";
@@ -57,7 +56,7 @@ export default function Home() {
                 билеты прямо на этой странице.
               </p>
             </div>
-            <TravelpayoutsResults />
+            <TravelpayoutsWhiteLabel />
           </div>
         </section>
 
