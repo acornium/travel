@@ -3,7 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { TPWidget } from "@/components/TPWidget";
+import {
+  TravelpayoutsResults,
+  TravelpayoutsWhiteLabel,
+} from "@/components/TravelpayoutsWhiteLabel";
 import { DestinationCard } from "@/components/DestinationCard";
 import { destinations } from "@/lib/data/destinations";
 import { ShieldCheck, Globe, Zap, ArrowRight } from "lucide-react";
@@ -37,8 +40,23 @@ export default function Home() {
             </p>
 
             <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              <TPWidget type="search" />
+              <TravelpayoutsWhiteLabel />
             </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Результаты поиска авиабилетов
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+                После запуска поиска виджет Travelpayouts покажет доступные
+                билеты прямо на этой странице.
+              </p>
+            </div>
+            <TravelpayoutsResults />
           </div>
         </section>
 
